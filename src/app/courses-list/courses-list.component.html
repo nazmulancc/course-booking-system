@@ -1,0 +1,4 @@
+<h2>{{ title }}</h2>
+@for(course of courses; track course.id){
+<app-course-card [course]="course"></app-course-card>
+}
