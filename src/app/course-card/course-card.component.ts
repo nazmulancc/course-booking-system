@@ -10,12 +10,13 @@ import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 export class CourseCardComponent {
   @Input() course: any;
   @Output() courseBooked = new EventEmitter<any>();
+  @Output() wishListAdded = new EventEmitter<any>();
 
   onCourseBooked(): void {
     this.courseBooked.emit(this.course);
   }
 
-  // viewDetails(title: string): void{
-  //   alert(`Viewing details for ${title}`)
-  // }
+  onAddToWishList(): void{
+    this.wishListAdded.emit(this.course);
+  }
 }
