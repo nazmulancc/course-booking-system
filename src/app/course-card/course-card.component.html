@@ -2,7 +2,7 @@
     <img [src]="course.img" [alt]="course.title" width="100">
     <h3>{{ course.title}}</h3>
     <p>{{ course.description}}</p>
-    <p>{{ course.prices | currency: 'AUD'}}p>
+    <p>{{ course.prices | currency: 'AUD'}}</p>
     <p>{{ course.date | date: 'longDate'}}</p>
     <p [hidden]="!course.soldOut">Sold Out</p>
    
@@ -12,5 +12,5 @@
     @if (course.onSale){
         <div class="sale-banner">On Sale!</div>
     }
-    <button (click)="viewDetails(course.title)">View details</button>
+    <button (click)="onCourseBooked()">View details</button>
 </div>
