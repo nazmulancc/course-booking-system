@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../models/course.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class CourseService {
     {id: 3, title: 'RxJS Fundamentals', description: 'Asynchoronous Data Stream', prices: 199, date: '2025-07-07', soldOut: false, img: 'rxjs-logo.png', onSale: false},
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getCourses(): Course[] {
     return this.courses;
