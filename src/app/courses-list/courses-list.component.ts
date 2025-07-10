@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CourseCardComponent } from '../course-card/course-card.component';
 import { Course } from '../models/course.model';
 import { CourseService } from '../services/course.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -15,21 +16,30 @@ export class CoursesListComponent implements OnInit{
   title: string ="Available Courses";
   wishlist: Course[] = [];
   courses: Course[] = [];
-
-  constructor(private coursesService: CourseService) {
+  
+  // The constructor can be used to inject services or initialize properties
+  // but we will fetch the courses in ngOnInit to ensure the component is fully initialized.
+  constructor(private coursesService: CourseService, private route: ActivatedRoute, private router: Router) {
+    
   }
   
   ngOnInit(): void {
-    this.coursesService.getCourses().subscribe({
+   this.route.queryParamMap.subscribe(params => {
+      const description = params.get('description');
+      this.loadCoursesByDescription(description);
+    });
+  }
+
+  loadCoursesByDescription(description: string | null): void {
+    this.coursesService.getCourses(description).subscribe({
       next: (data: Course[]) => {
         this.courses = data;
       },
       error: (error) => {
-        console.log("Error fetching courses: ", error);
+        console.error("Error fetching courses by description: ", error);
       }
     });
   }
-
   // ngOnInit(): void {
   //   this.courses = [
   //     { id: 1, title: 'Angular Basics', description: 'Learn Angular', prices: 100, date: '2025-07-10', img: '', soldOut: false, onSale: false },

@@ -13,6 +13,7 @@
     @if (course.onSale){
         <div class="sale-banner">On Sale!</div>
     }
+    <button (click)="goToDetails(course.id)">See Details</button>
     <button (click)="onAddToWishList()">Add to Wishlist</button>
     <button [disabled] ="course.soldOut" (click)="onCourseBooked()">Book Course</button>
 </div>

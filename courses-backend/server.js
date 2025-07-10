@@ -65,6 +65,15 @@ app.post('/courses', (req, res) => {
 // Get all students
 app.get('/students', (req, res) => {
     const data = loadData();
+    let courses = data.courses;
+
+    const descriptionFilter = req.query.description;
+    if (descriptionFilter) {
+        // Filter courses by description if description includes the substring
+        courses = courses.filter(c =>
+            c.description.toLowerCase().includes(descriptionFilter.toLowerCase())
+        );
+    }
     res.json(data.students);
 });
 

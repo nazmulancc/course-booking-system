@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Course } from '../models/course.model';
 import { CourseService } from '../services/course.service';
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-course-detail',
@@ -9,14 +10,24 @@ import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css'
 })
-export class CourseDetailComponent {
+export class CourseDetailComponent implements OnInit {
   // This component will display the details of a specific course
   // It will use the CourseService to fetch the course data by ID
   // and display it in the template.
   
   course: Course | null = null;
 
-  constructor(private courseService: CourseService){}
+  constructor(private courseService: CourseService, private route: ActivatedRoute){}
+
+  ngOnInit(): void{
+    this.route.paramMap.subscribe(params => {
+      const idStr = params.get('id');
+      if (idStr) {
+        const id = +idStr;
+        this.loadCourseById(id);
+      }
+    });
+  }
 
   loadCourseById(id: number): void {
     this.courseService.getCourseById(id).subscribe({

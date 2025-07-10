@@ -24,8 +24,12 @@ export class CourseService {
 
 
   //GET All courses
-  getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(`${this.baseUrl}/courses`);
+  getCourses(description?: string | null): Observable<Course[]> {
+    let url = `${this.baseUrl}/courses`;
+    if (description) {
+      url += `?description=${description}`;
+    }
+    return this.http.get<Course[]>(url);
   }
 
   //GET Course by ID
