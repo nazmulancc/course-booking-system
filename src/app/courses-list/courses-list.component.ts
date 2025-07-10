@@ -20,10 +20,16 @@ export class CoursesListComponent implements OnInit{
   }
   
   ngOnInit(): void {
-    this.courses = this.coursesService.getCourses();
-    console.log("Course list initialized")
+    this.coursesService.getCourses().subscribe({
+      next: (data: Course[]) => {
+        this.courses = data;
+      },
+      error: (error) => {
+        console.log("Error fetching courses: ", error);
+      }
+    });
   }
-
+  
   onCourseBooked(course: Course): void{
     console.log('Parent heard about booking: ', course.title);
   }
