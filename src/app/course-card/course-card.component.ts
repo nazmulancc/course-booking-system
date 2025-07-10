@@ -9,7 +9,7 @@ import { Course } from '../models/course.model';
   styleUrl: './course-card.component.css'
 })
 export class CourseCardComponent {
-  @Input() course!: Course;
+  @Input() course?: Course;
   @Output() courseBooked = new EventEmitter<any>();
   @Output() wishListAdded = new EventEmitter<any>();
 

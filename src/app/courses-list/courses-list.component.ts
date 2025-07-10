@@ -29,6 +29,13 @@ export class CoursesListComponent implements OnInit{
       }
     });
   }
+
+  // ngOnInit(): void {
+  //   this.courses = [
+  //     { id: 1, title: 'Angular Basics', description: 'Learn Angular', prices: 100, date: '2025-07-10', img: '', soldOut: false, onSale: false },
+  //     { id: 2, title: 'RxJS Deep Dive', description: 'Master RxJS', prices: 120, date: '2025-07-11', img: '', soldOut: false, onSale: true }
+  //   ];
+  // }
   
   onCourseBooked(course: Course): void{
     console.log('Parent heard about booking: ', course.title);

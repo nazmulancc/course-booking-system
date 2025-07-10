@@ -1,10 +1,10 @@
 export interface Course {
-  id: number;
-  title: string;
-  description: string;
-  prices: number;
-  img?: string;
-  date?: string;
-  soldOut: boolean;
-  onSale: boolean;
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    date?: string;
+    img?: string;
+    soldOut?: boolean;
+    onSale?: boolean;
 }

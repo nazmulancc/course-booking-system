@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
 import { Course } from '../models/course.model';
 import { CourseService } from '../services/course.service';
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-course-detail',
-  imports: [
-    DatePipe,
-    CurrencyPipe
-  ],
+  imports: [CommonModule],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css'
 })
@@ -27,7 +24,7 @@ export class CourseDetailComponent {
         this.course = data;
       },
       error: (err) => {
-        console.error('Error fetching course:', err);
+        console.error('Error fetching course by ID:', err);
       }
     })
   }

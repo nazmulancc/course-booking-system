@@ -1,12 +1,13 @@
+@if(course){
 <div class="course-card">
     <img [src]="course.img" [alt]="course.title" width="100">
     <h3>{{ course.title}}</h3>
     <p>{{ course.description}}</p>
-    <p>{{ course.prices | currency: 'AUD'}}</p>
+    <p>{{ course.price | currency: 'AUD'}}</p>
     <p>{{ course.date | date: 'longDate'}}</p>
     <p [hidden]="!course.soldOut">Sold Out</p>
    
-    @if (course.prices < 50){
+    @if (course.price < 50){
         <div class="special-offer">Special Offer!</div>
     }
     @if (course.onSale){
@@ -15,3 +16,4 @@
     <button (click)="onAddToWishList()">Add to Wishlist</button>
     <button [disabled] ="course.soldOut" (click)="onCourseBooked()">Book Course</button>
 </div>
+}

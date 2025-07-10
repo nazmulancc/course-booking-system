@@ -8,7 +8,7 @@
   <div>
     <h3>{{ course.title }}</h3>
     <p>{{ course.description }}</p>
-    <p>{{ course.prices | currency }}</p>
+    <p>{{ course.price | currency }}</p>
     <p>{{ course.date | date:'longDate'}} </p>
 
     <img [src]="course.img" [alt]="course.title" width="100"/>
