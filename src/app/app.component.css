@@ -1,25 +1,29 @@
 nav {
-  background-color: #1976d2;
-  border-bottom: 1px solid #ddd;
-  padding: 0.5rem 1rem;
+  background-color: #1565c0; /* Deeper blue for more contrast */
+  border-bottom: 2px solid #0d47a1;
+  padding: 1rem 2rem;        /* More padding for height */
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15); /* Subtle shadow */
 }
 
 nav a {
-  color: #0072b1;
+  color: #fff;
   text-decoration: none;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 4px;
   font-weight: 500;
+  transition: 0.2s, color 0.2s;
 }
 
 nav a:hover {
-  background-color: #e7f3ff;
+  background-color: #1976d2;
+  color: #fff;
 }
 
 nav a.active {
-  background-color: #0072b1;
-  color: #fff;
+  background-color: #fff;
+  color: #1565c0;
+  font-weight: bold;
 }
